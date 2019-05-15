@@ -8,8 +8,13 @@ import {
   Text,
   Link,
   Appear,
+  Image,
 } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
+
+import serverBudget from './assets/server-budget.png';
+import lambdaDiagram from './assets/lambda-diagram.png';
+import lambdaBudget from './assets/lambda-budget.png';
 
 require('normalize.css');
 
@@ -180,6 +185,28 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
+        {/* --- Advantages --- */}
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Advantages
+          </Heading>
+          <List>
+            <Appear>
+              <ListItem size={30}>
+                Creation of new server is easy - been there, done that
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem size={30}>All code in one repository</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem size={30}>
+                Easy to use - give the file, run command, wait for output
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
         {/* --- Disadvantages --- */}
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
@@ -201,6 +228,67 @@ export default class Presentation extends React.Component {
               <ListItem size={30}>
                 Cost - server was iddle most of the time
               </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        {/* --- Server cost image --- */}
+        <Slide bgColor="quaternary">
+          <Image src={serverBudget} />
+        </Slide>
+
+        {/* --- Solutions --- */}
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Solutions {/* TODO - this maybe needs better name... */}
+          </Heading>
+          <List>
+            <Appear>
+              <ListItem size={30}>Use queues in between of steps</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem size={30}>Hard monitoring of status</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem size={30}>Only code can be shared</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem size={30}>
+                Cost - server was iddle most of the time
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        {/* --- Lambda / serverless --- */}
+        <Slide bgColor="secondary" textColor="primary">
+          <Heading size={2} textColor="primary" caps>
+            Lambda serverless
+          </Heading>
+          <Text size={1} textColor="tertiary" bold>
+            The "cool" way
+          </Text>
+        </Slide>
+
+        {/* --- Lambda description --- */}
+        <Slide bgColor="quaternary" bgImage={lambdaDiagram} />
+
+        {/* --- Lambda price --- */}
+        <Slide bgColor="quaternary">
+          <Image src={lambdaBudget} margin="-133px 0" />
+        </Slide>
+
+        {/* --- Advantages --- */}
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Advantages
+          </Heading>
+          <List>
+            <Appear>
+              <ListItem size={30}>Pay for what you use</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem size={30}>Clear separation of concerns</ListItem>
             </Appear>
           </List>
         </Slide>
