@@ -11,7 +11,8 @@
     "start": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && surge -p ./build --domain talk-from-service-to-lambda.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
