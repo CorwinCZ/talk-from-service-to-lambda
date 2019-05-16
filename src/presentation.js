@@ -110,7 +110,7 @@ export default class Presentation extends Component {
               `3th party service fails -> continue without it`,
             )}
             {this.renderAppearListItem(
-              `It will change - a lot. New enrichments, new data sources.`,
+              `It will change - a lot. New enrichments, new data sources`,
             )}
             {this.renderAppearListItem(
               `Architecture, components or code should be re-used by other projects / imports`,
