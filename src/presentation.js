@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Deck,
   Heading,
@@ -19,6 +19,8 @@ import lambdaMonitoring from './assets/lambda-monitoring.png';
 
 // memes
 import letsDoIt from './assets/letsDoIt.jpg';
+import suchLambda from './assets/suchLambda.jpg';
+import easyJob from './assets/easyJob.jpg';
 
 require('normalize.css');
 
@@ -35,7 +37,13 @@ const theme = createTheme(
   },
 );
 
-export default class Presentation extends React.Component {
+export default class Presentation extends Component {
+  renderAppearListItem = inputString => (
+    <Appear>
+      <ListItem>{inputString}</ListItem>
+    </Appear>
+  );
+
   render() {
     return (
       <Deck transition={['fade']} transitionDuration={500} theme={theme}>
@@ -61,22 +69,16 @@ export default class Presentation extends React.Component {
             The problem
           </Heading>
           <List>
-            <Appear>
-              <ListItem>Data import</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>.xml file of various size</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Size ranging from few MB to ~300MB</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Hundreds of items on average</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Periodic - every 15 minutes</ListItem>
-            </Appear>
+            {this.renderAppearListItem(`Data import`)}
+            {this.renderAppearListItem(`.xml file of various sizes`)}
+            {this.renderAppearListItem('Size ranging from few MB to ~300MB 💽')}
+            {this.renderAppearListItem(`Hundreds of items on average 💯`)}
+            {this.renderAppearListItem(`Periodic - every 15 minutes ⏱️`)}
           </List>
+        </Slide>
+
+        <Slide bgColor="quaternary">
+          <Image src={easyJob} />
         </Slide>
 
         {/* --- Data processing --- */}
@@ -85,24 +87,15 @@ export default class Presentation extends React.Component {
             Data processing
           </Heading>
           <List>
-            <Appear>
-              <ListItem>Convert .xml to JSON objects</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Translate keys from German to English</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Download attachments (few dozens per item)</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                Call 3th party API to enrich part of data (slow and throttling
-                inputs)
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Store data by calling our API</ListItem>
-            </Appear>
+            {this.renderAppearListItem(`Convert .xml to JSON objects`)}
+            {this.renderAppearListItem(`Translate keys from 🇩🇪 to 🇬🇧`)}
+            {this.renderAppearListItem(
+              `Download attachments (few dozens per item) 🖼️`,
+            )}
+            {this.renderAppearListItem(
+              `Call 3th party API to enrich part of data (slow and throttling requests)`,
+            )}
+            {this.renderAppearListItem(`Store data by calling our API`)}
           </List>
         </Slide>
 
@@ -112,31 +105,17 @@ export default class Presentation extends React.Component {
             Requirements
           </Heading>
           <List>
-            <Appear>
-              <ListItem>Time - it should complete in seconds per item</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>No data loss</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                3th party service fails -> continue without it
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                It will change - a lot. New enrichments, new data sources.
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                Architecture, components or code should be re-used by other
-                projects / imports
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Automate - everything!</ListItem>
-            </Appear>
+            {this.renderAppearListItem(`No data loss`)}
+            {this.renderAppearListItem(
+              `3th party service fails -> continue without it`,
+            )}
+            {this.renderAppearListItem(
+              `It will change - a lot. New enrichments, new data sources.`,
+            )}
+            {this.renderAppearListItem(
+              `Architecture, components or code should be re-used by other projects / imports`,
+            )}
+            {this.renderAppearListItem(`Automate - everything! 🤖`)}
           </List>
         </Slide>
 
@@ -161,77 +140,53 @@ export default class Presentation extends React.Component {
             Server set-up
           </Heading>
           <List>
-            <Appear>
-              <ListItem>
-                Node.js server in docker, running in AWS EC2 instance
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                Took the file and called bunch of functions in chain
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>1 - Split into chunks</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>2 - Translate keys</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>3 - Download attachments</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>4 - Call 3th party API</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>5 - Send data to our API for storage</ListItem>
-            </Appear>
+            {this.renderAppearListItem(
+              `Node.js server in docker, running in AWS EC2 instance`,
+            )}
+            {this.renderAppearListItem(
+              `Took the file and called bunch of functions in chain`,
+            )}
+            {this.renderAppearListItem(`1 - Split into chunks ✔️`)}
+            {this.renderAppearListItem(`2 - Translate keys ✔️`)}
+            {this.renderAppearListItem(`3 - Download attachments ✔️`)}
+            {this.renderAppearListItem(`4 - Call 3th party API ✔️`)}
+            {this.renderAppearListItem(
+              `5 - Send data to our API for storage ✔️`,
+            )}
           </List>
         </Slide>
 
         {/* --- Advantages --- */}
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
-            Advantages
+            Server advantages 👍
           </Heading>
           <List>
-            <Appear>
-              <ListItem>
-                Creation of new server is easy - been there, done that
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>All code in one repository</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                Easy to use - give the file, run command, wait for output
-              </ListItem>
-            </Appear>
+            {this.renderAppearListItem(
+              `Creation of new server is easy - been there, done that`,
+            )}
+            {this.renderAppearListItem(`All code in one repository`)}
+            {this.renderAppearListItem(
+              `Easy to use - give the file, run command, wait for output`,
+            )}
           </List>
         </Slide>
 
         {/* --- Disadvantages --- */}
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
-            Disadvantages
+            Server disadvantages 👎
           </Heading>
           <List>
-            <Appear>
-              <ListItem>This is "naive" implementation</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>When the process fails, data can be lost</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Hard monitoring of status</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Only code can be shared</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Cost - server was iddle most of the time</ListItem>
-            </Appear>
+            {this.renderAppearListItem(`This is "naive" implementation`)}
+            {this.renderAppearListItem(
+              `When the process fails, data can be lost`,
+            )}
+            {this.renderAppearListItem(`Hard monitoring of status`)}
+            {this.renderAppearListItem(`Only code can be shared`)}
+            {this.renderAppearListItem(
+              `Cost - server was iddle most of the time 💸`,
+            )}
           </List>
         </Slide>
 
@@ -243,23 +198,17 @@ export default class Presentation extends React.Component {
         {/* --- Possible improvements --- */}
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
-            Possible improvements
+            Possible improvements 📈
           </Heading>
           <List>
-            <Appear>
-              <ListItem>Use queues in between of steps</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Split into multiple services</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                Enrichment and file splitting should be separate processes
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Don't use JavaScript for file processing...</ListItem>
-            </Appear>
+            {this.renderAppearListItem(`Use queues in between of steps`)}
+            {this.renderAppearListItem(`Split into multiple services`)}
+            {this.renderAppearListItem(
+              `Enrichment and file splitting should be separate processes`,
+            )}
+            {this.renderAppearListItem(
+              `Don't use JavaScript for file processing...`,
+            )}
           </List>
         </Slide>
 
@@ -276,6 +225,11 @@ export default class Presentation extends React.Component {
         {/* --- Lambda description --- */}
         <Slide bgColor="quaternary" bgImage={lambdaDiagram} />
 
+        {/* --- Such Lambda --- */}
+        <Slide bgColor="quaternary">
+          <Image src={suchLambda} />
+        </Slide>
+
         {/* --- Lambda price --- */}
         <Slide bgColor="quaternary">
           <Image src={lambdaBudget} margin="-133px 0" />
@@ -284,27 +238,15 @@ export default class Presentation extends React.Component {
         {/* --- Advantages Lambda --- */}
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
-            Advantages
+            Lambda advantages 👍
           </Heading>
           <List>
-            <Appear>
-              <ListItem>Pay for what you use</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Clear separation of concerns</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>AWS integration</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Simple to create and run</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Status monitoring ?</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Simple task concurency - 1000 default</ListItem>
-            </Appear>
+            {this.renderAppearListItem(`Pay for what you use 💸`)}
+            {this.renderAppearListItem(`Clear separation of concerns`)}
+            {this.renderAppearListItem(`AWS integration 🎉`)}
+            {this.renderAppearListItem(`Simple to create and run`)}
+            {this.renderAppearListItem(`Status monitoring ?`)}
+            {this.renderAppearListItem(`Simple task concurency - 1000 default`)}
           </List>
         </Slide>
 
@@ -316,24 +258,56 @@ export default class Presentation extends React.Component {
         {/* --- Disadvantages Lambda --- */}
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
-            Disadvantages
+            Lambda disadvantages 👎
           </Heading>
           <List>
-            <Appear>
-              <ListItem>Initial learning required - different concept</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Debugging - console.logs everywhere</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Local development / cloud testing</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Lambda / repositories ratio + deployment</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>AWS IAM - rights to other services...</ListItem>
-            </Appear>
+            {this.renderAppearListItem(
+              `Initial learning required - different concept`,
+            )}
+            {this.renderAppearListItem(`Debugging - console.logs everywhere`)}
+            {this.renderAppearListItem(`Local development / cloud testing ☁️`)}
+            {this.renderAppearListItem(
+              `Lambda / repositories ratio + deployment`,
+            )}
+            {this.renderAppearListItem(`AWS IAM - rights to other services...`)}
+            {this.renderAppearListItem(`Vendor / cloud lock-in 🔒`)}
+          </List>
+        </Slide>
+
+        {/* --- How to Lambda --- */}
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            How-to Lambda
+          </Heading>
+          <List>
+            {this.renderAppearListItem(
+              `Lambda is somewhere between function and module`,
+            )}
+            {this.renderAppearListItem(`Lambdas are state-less`)}
+            {this.renderAppearListItem(`If not, use Step Functions`)}
+            {this.renderAppearListItem(`Data flow should be uni-directional`)}
+            {this.renderAppearListItem(`Think of logging from line 0`)}
+            {this.renderAppearListItem(
+              `Running Lambda two times with same data should give same result`,
+            )}
+            {this.renderAppearListItem(
+              `If previous is not possible use dead letter queues`,
+            )}
+          </List>
+        </Slide>
+
+        {/* --- Serverless types --- */}
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Serverless types
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`AWS Lambda`)}
+            {this.renderAppearListItem(`Azure Functions`)}
+            {this.renderAppearListItem(`Google Cloud Functions`)}
+            {this.renderAppearListItem(
+              `Serverless framework + Apache, CloudFlare, Kubeless`,
+            )}
           </List>
         </Slide>
 
@@ -352,11 +326,10 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary">
             Would I use Lambda again?
           </Heading>
-          <Appear>
-            <Text size={1} textColor="secondary" bold>
-              Yes. But not for everything.
-            </Text>
-          </Appear>
+
+          <Text size={1} textColor="secondary" bold>
+            Yes. But not for everything.
+          </Text>
         </Slide>
 
         {/* --- Questions in conclusion --- */}
@@ -364,17 +337,20 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary">
             Is it suitable for full blown API server?
           </Heading>
-          <Appear>
-            <Text size={1} textColor="secondary" bold>
-              No. At least not yet.
-            </Text>
-          </Appear>
-          <Appear>
-            <List textColor="secondary">
-              <ListItem>Code / repositories / deployment handling</ListItem>
-              <ListItem>DB migrations</ListItem>
-            </List>
-          </Appear>
+
+          <Text size={1} textColor="secondary" bold>
+            No. At least not yet.
+          </Text>
+
+          <List textColor="secondary">
+            {this.renderAppearListItem(
+              `Code / repositories / deployment handling`,
+            )}
+            {this.renderAppearListItem(`DB migrations`)}
+            {this.renderAppearListItem(
+              `But maybe for really big teams it could be better?`,
+            )}
+          </List>
         </Slide>
 
         {/* --- Good use-cases --- */}
@@ -383,18 +359,13 @@ export default class Presentation extends React.Component {
             Good Lambda use-cases
           </Heading>
           <List textColor="secondary">
-            <Appear>
-              <ListItem>Single purpose API's</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Data processing</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>AWS services triggers (S3, SQS, API Gateway)</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Ad hoc compute heavy tasks (non-core)</ListItem>
-            </Appear>
+            {this.renderAppearListItem(`Single purpose API's`)}
+            {this.renderAppearListItem(`Data processing`)}
+            {this.renderAppearListItem(
+              `AWS services triggers (S3, SQS, API Gateway)`,
+            )}
+            {this.renderAppearListItem(`Ad hoc compute heavy tasks (non-core)`)}
+            {this.renderAppearListItem(`IoT / HW data processing`)}
           </List>
         </Slide>
 
